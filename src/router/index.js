@@ -15,9 +15,22 @@ export default new Router({
           name: 'home',
           component: () => import(/* webpackChunkName: "home" */ "@/views/home"),
       },
+
       {
           path: '/login',
           component: resolve => require(['../login/login.vue'], resolve)
       },
+
+      {
+          path: '/admin',
+          component: resolve => require(['../admin/common/adminHome.vue'], resolve),
+          children:[
+              {
+                  path: '/list',
+                  component: resolve => require(['../views/home.vue'], resolve)
+              },
+          ]
+      },
+
   ]
 })
