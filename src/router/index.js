@@ -13,7 +13,7 @@ export default new Router({
       {
           path: '/home',
           name: 'home',
-          component: () => import(/* webpackChunkName: "home" */ "@/views/home"),
+          component: resolve => require(['../components/allMap.vue'], resolve),
       },
 
       {
@@ -26,8 +26,16 @@ export default new Router({
           component: resolve => require(['../admin/common/adminHome.vue'], resolve),
           children:[
               {
-                  path: '/list',
-                  component: resolve => require(['../views/home.vue'], resolve)
+                  path: '/admin',
+                  component: resolve => require(['../components/allMap.vue'], resolve)
+              },
+              {
+                  path: '/listuser',
+                  component: resolve => require(['../admin/page/controlUser.vue'], resolve)
+              },
+              {
+                  path: '/compare',
+                  component: resolve => require(['../admin/page/compare.vue'], resolve)
               },
           ]
       },

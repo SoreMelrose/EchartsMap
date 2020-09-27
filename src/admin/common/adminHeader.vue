@@ -4,7 +4,7 @@
         <div class="user-info">
             <el-dropdown trigger="click" @command="handleCommand">
                 <span class="el-dropdown-link">
-                    <img class="user-logo" src="../../assets/admin.jpg">
+                    <!--<img class="user-logo" src="../../assets/admin.jpg">-->
                     {{username}}
                 </span>
                 <el-dropdown-menu slot="dropdown">
@@ -18,7 +18,7 @@
     export default {
         data() {
             return {
-                name: '管理员'
+                name: '管理员',
             }
         },
         computed:{
@@ -63,7 +63,7 @@
         position: relative;
         display: inline-block;
         padding-left: 50px;
-        color: #fff;
+        color: white;
         cursor: pointer;
         vertical-align: middle;
     }

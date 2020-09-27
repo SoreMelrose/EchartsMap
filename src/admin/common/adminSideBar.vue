@@ -2,14 +2,14 @@
     <div class="sidebar">
         <el-menu :default-active="onRoutes" class="el-menu-vertical-demo" theme="dark" unique-opened router>
             <template v-for="item in items">
-                <template v-if="item.subs">
-                    <el-submenu :index="item.index">
-                        <template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>
-                        <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">{{ subItem.title }}
-                        </el-menu-item>
-                    </el-submenu>
-                </template>
-                <template v-else>
+                <!--<template v-if="item.subs">-->
+                    <!--<el-submenu :index="item.index">-->
+                        <!--<template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>-->
+                        <!--<el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">{{ subItem.title }}-->
+                        <!--</el-menu-item>-->
+                    <!--</el-submenu>-->
+                <!--</template>-->
+                <template >
                     <el-menu-item :index="item.index">
                         <i :class="item.icon"></i>{{ item.title }}
                     </el-menu-item>
@@ -25,36 +25,20 @@
             return {
                 items: [
                     {
+                        icon: 'el-icon-location',
+                        index: 'admin',
+                        title: '信息管理',
+                    },
+                    {
                         icon: 'el-icon-setting',
-                        index: 'listadmin',
+                        index: 'listuser',
                         title: '用户管理',
                     },
                     {
                         icon: 'el-icon-setting',
-                        index: 'chinaMap',
-                        title: '地图管理',
+                        index: 'compare',
+                        title: '信息比较',
                     },
-                    {
-                        icon: 'el-icon-setting',
-                        index: 'listprj',
-                        title: '项目管理',
-                    },
-                    {
-                        icon: 'el-icon-setting',
-                        index: 'statements4prj',
-                        title: '项目财务列表',
-                    },
-                    {
-                        icon: 'el-icon-setting',
-                        index: 'listtaken',
-                        title: '收支情况统计',
-                    },
-                    {
-                        icon: 'el-icon-setting',
-                        index: 'listprjft',
-                        title: '项目经费类别管理',
-                    },
-
                 ]
             }
         },
