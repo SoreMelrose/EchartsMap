@@ -1,14 +1,18 @@
 <template>
     <div class="sidebar">
-        <el-menu :default-active="onRoutes" class="el-menu-vertical-demo" theme="dark" unique-opened router>
+        <!--<el-radio-group v-model="isCollapse" style="margin-bottom: 20px;background-color: white">-->
+            <!--<el-radio-button :label="false">展开</el-radio-button>-->
+            <!--<el-radio-button :label="true">收起</el-radio-button>-->
+        <!--</el-radio-group>-->
+        <el-menu :default-active="onRoutes"  class=""  unique-opened router>
             <template v-for="item in items">
-                <!--<template v-if="item.subs">-->
-                    <!--<el-submenu :index="item.index">-->
-                        <!--<template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>-->
-                        <!--<el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">{{ subItem.title }}-->
-                        <!--</el-menu-item>-->
-                    <!--</el-submenu>-->
-                <!--</template>-->
+                <template v-if="item.subs">
+                    <el-submenu :index="item.index">
+                        <template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>
+                        <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">{{ subItem.title }}
+                        </el-menu-item>
+                    </el-submenu>
+                </template>
                 <template >
                     <el-menu-item :index="item.index">
                         <i :class="item.icon"></i>{{ item.title }}
@@ -23,7 +27,13 @@
     export default {
         data() {
             return {
+                isCollapse: true,
                 items: [
+                    {
+                        icon: 'el-icon-setting',
+                        index: 'searchSingle',
+                        title: '单指标查询',
+                    },
                     {
                         icon: 'el-icon-location',
                         index: 'admin',
@@ -42,6 +52,14 @@
                 ]
             }
         },
+        methods: {
+            handleOpen(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            handleClose(key, keyPath) {
+                console.log(key, keyPath);
+            }
+        },
         computed:{
             onRoutes(){
                 return this.$route.path.replace('/','');
@@ -51,14 +69,18 @@
 </script>
 
 <style scoped>
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+        width: 200px;
+        min-height: 400px;
+    }
     .sidebar{
         display: block;
         position: absolute;
-        width: 250px;
+        width: 200px;
         left: 0;
         top: 70px;
         bottom:0;
-        background: #2E363F;
+        background: white;
     }
     .sidebar > ul {
         height:100%;

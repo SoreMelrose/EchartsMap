@@ -13,6 +13,7 @@
 <script>
     import echarts from 'echarts'
     import resize from "./mixins/resize";
+
     export default {
         name: 'allMap',
         mixins: [resize],
@@ -210,7 +211,7 @@
                                     }
                                     let txtCon =
                                         "<div style='text-align:left'>" + p.name + ":<br />销售额：" + val.toFixed(
-                                            2) + '万</div>';
+                                        2) + '万</div>';
                                     return txtCon;
                                 }
                             },
@@ -288,16 +289,16 @@
                     })
                     option.options.push({
                         title: [{
-                                left: 'center',
-                                top: 10,
-                                text: item + this.parentInfo[this.parentInfo.length - 1].cityName +
-                                    '年' +
-                                    '销售额统计图(可点击下钻到县)',
-                                textStyle: {
-                                    color: 'rgb(179, 239, 255)',
-                                    fontSize: 16
-                                },
+                            left: 'center',
+                            top: 10,
+                            text: item + this.parentInfo[this.parentInfo.length - 1].cityName +
+                                '年' +
+                                '销售额统计图(可点击下钻到县)',
+                            textStyle: {
+                                color: 'rgb(179, 239, 255)',
+                                fontSize: 16
                             },
+                        },
                             {
                                 text: "销售总额：" + sum[item].toFixed(2) + '万',
                                 left: 'center',
@@ -368,61 +369,61 @@
                             data: xData
                         },
                         series: [{
-                                name: item + '销售额度',
-                                type: 'map',
-                                geoIndex: 0,
-                                map: this.parentInfo.length === 1 ? 'china' : 'map',
-                                roam: true,
-                                zoom: 1.3,
-                                tooltip: {
-                                    trigger: "item",
-                                    formatter: p => {
-                                        let val = p.value;
-                                        if (p.name == '南海诸岛') return
-                                        if (window.isNaN(val)) {
-                                            val = 0;
-                                        }
-                                        let txtCon =
-                                            "<div style='text-align:left'>" + p.name +
-                                            ":<br />销售额：" + val.toFixed(2) + '万</div>';
-                                        return txtCon;
+                            name: item + '销售额度',
+                            type: 'map',
+                            geoIndex: 0,
+                            map: this.parentInfo.length === 1 ? 'china' : 'map',
+                            roam: true,
+                            zoom: 1.3,
+                            tooltip: {
+                                trigger: "item",
+                                formatter: p => {
+                                    let val = p.value;
+                                    if (p.name == '南海诸岛') return
+                                    if (window.isNaN(val)) {
+                                        val = 0;
                                     }
-                                },
-                                label: {
-                                    normal: {
-                                        show: false,
-                                    },
-                                    emphasis: {
-                                        show: false,
-                                    }
-                                },
-                                data: mapData[item],
-
-                            }, {
-                                name: '散点',
-                                type: 'effectScatter',
-                                coordinateSystem: 'geo',
-                                rippleEffect: {
-                                    brushType: 'fill'
-                                },
-                                itemStyle: {
-                                    normal: {
-                                        color: '#F4E925',
-                                        shadowBlur: 10,
-                                        shadowColor: '#333'
-                                    }
-                                },
-                                data: pointData[item],
-                                // symbolSize: 8,
-                                symbolSize: function (val) {
-                                    let value = val[2]
-                                    if (value == max) {
-                                        return 27
-                                    }
-                                    return 10
-                                },
-                                showEffectOn: 'render', //加载完毕显示特效
+                                    let txtCon =
+                                        "<div style='text-align:left'>" + p.name +
+                                        ":<br />销售额：" + val.toFixed(2) + '万</div>';
+                                    return txtCon;
+                                }
                             },
+                            label: {
+                                normal: {
+                                    show: false,
+                                },
+                                emphasis: {
+                                    show: false,
+                                }
+                            },
+                            data: mapData[item],
+
+                        }, {
+                            name: '散点',
+                            type: 'effectScatter',
+                            coordinateSystem: 'geo',
+                            rippleEffect: {
+                                brushType: 'fill'
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: '#F4E925',
+                                    shadowBlur: 10,
+                                    shadowColor: '#333'
+                                }
+                            },
+                            data: pointData[item],
+                            // symbolSize: 8,
+                            symbolSize: function (val) {
+                                let value = val[2]
+                                if (value == max) {
+                                    return 27
+                                }
+                                return 10
+                            },
+                            showEffectOn: 'render', //加载完毕显示特效
+                        },
                             {
                                 type: 'bar',
                                 barGap: '-100%',
@@ -495,22 +496,22 @@
 
     .mapChoose {
         position: absolute;
-        left: 20px;
-        top: 55px;
+        left: 10px;
+        top: 30px;
         color: #eee;
 
+    .title {
+        padding: 5px;
+        border-top: 1px solid rgba(147, 235, 248, .8);
+        border-bottom: 1px solid rgba(147, 235, 248, .8);
+        cursor: pointer;
+    }
 
-        .title {
-            padding: 5px;
-            border-top: 1px solid rgba(147, 235, 248, .8);
-            border-bottom: 1px solid rgba(147, 235, 248, .8);
-            cursor: pointer;
-        }
+    .icon {
+        font-family: "simsun";
+        font-size: 25px;
+        margin: 0 11px;
+    }
 
-        .icon {
-            font-family: "simsun";
-            font-size: 25px;
-            margin: 0 11px;
-        }
     }
 </style>

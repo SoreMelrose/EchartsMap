@@ -22,7 +22,7 @@ export default new Router({
       },
 
       {
-          path: '/admin',
+          path: '/searchSingle',
           component: resolve => require(['../admin/common/adminHome.vue'], resolve),
           children:[
               {
@@ -36,6 +36,10 @@ export default new Router({
               {
                   path: '/compare',
                   component: resolve => require(['../admin/page/compare.vue'], resolve)
+              },
+              {
+                  path: '/searchSingle',
+                  component: resolve => require(['../admin/page/searchSingle.vue'], resolve)
               },
           ]
       },

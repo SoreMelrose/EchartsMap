@@ -4,7 +4,7 @@
         <div class="demo-input-suffix ms-login">
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="70px" class="demo-ruleForm">
                 <el-form-item prop="用户名"label="用户名">
-                    <el-input v-model="ruleForm.username"  prefix-icon="icon-user"  placeholder="username" size="small" @keyup.enter.native="submitForm('ruleForm')">
+                    <el-input v-model="ruleForm.username"  placeholder="username" size="small" @keyup.enter.native="submitForm('ruleForm')">
                     </el-input>
                 </el-form-item>
                 <el-form-item prop="密码"label="密码">
